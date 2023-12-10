@@ -160,7 +160,6 @@ export const readCommands = async (pathname = "plugins") => {
           if (!plugin.default?.tags) return;
           plugins.set(names, plugin);
         }
-        console.log(plugins)
       });
   } catch (e) {
     console.error(e);
