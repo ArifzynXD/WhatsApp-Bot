@@ -32,7 +32,7 @@ yarn
 
 ## example plugins 
 ```js
-module.exports = {
+export default {
   name: "", // plugins name, tampilkan menu, support array
   command: [""],
   tags: [""], // tags, tags plugins untuk menu// commad unutuk plugins
