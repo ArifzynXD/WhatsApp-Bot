@@ -31,6 +31,7 @@ export default {
           break;
         default:
       }
+      if (response.status !== 200) return m.reply(Func.format(response))
       m.reply(response.result);
     } catch (e) {
       console.error(e);
