@@ -35,10 +35,10 @@ I am an automated system (WhatsApp Bot) that can help to do something, search an
 ╰────────────๑ 
 ${readmore} 
 `.trimStart(),
-  header: "╭─「 %category 」",
-  body: "│❖ %cmd %islimit %isPremium",
-  footer: "╰────● ",
-  after: `\n*Powerred By :* _https://api.arifzyn.biz.id_`,
+  header: "⌬ %category ⌬",
+  body: "⦿ %cmd %islimit %isPremium",
+  footer: "",
+  after: `*Powerred By :* _https://api.arifzyn.biz.id_`,
 };
 
 export default {

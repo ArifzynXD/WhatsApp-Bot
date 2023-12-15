@@ -7,10 +7,10 @@ export default {
   tags: ["owner"],
   run: async (m, { conn }) => {
     let filename = /\.js$/i.test(m.text)
-      ? `../${text}`
-      : path.join(__dirname, `../${m.text}.js`);
+      ? `../../${text}`
+      : path.join(__dirname, `../../plugins/${m.text}.js`);
     const listCmd = fs
-      .readdirSync(path.join(__dirname, "../"))
+      .readdirSync(path.join(__dirname, "../../plugins"))
       .map((v) => v.replace(/\.js/, ""));
     if (!fs.existsSync(filename))
       return m.reply(

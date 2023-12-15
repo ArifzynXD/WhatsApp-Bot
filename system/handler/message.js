@@ -11,13 +11,16 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import moment from 'moment-timezone';
+import chalk from "chalk";
 import Database from '../lib/localdb.js';
 import Function from '../lib/function.js';
 import { fileURLToPath } from "url";
+import { createRequire } from "module";
 
 const dbPath = "system/temp/database.json"
 const database = new Database(dbPath)
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 
 database.connect().catch(() => database.connect());
 setInterval(async () => {
@@ -28,24 +31,41 @@ global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in config.
 global.Func = Function
 global.config = config
 global.__dirname = __dirname
+global.require = require
 
 export const Message = async (conn, m, store) => {
 	try {
 		if (!m) return;
+		m.exp = 0
 		if (!config.options.public && !m.isOwner) return
         if (m.from && global.db.chats[m.from]?.mute && !m.isOwner) return
         if (m.isBaileys) return
+        m.exp += Math.ceil(Math.random() * 10)
         
 		const prefix = (m.prefix = /^[°•π÷×¶∆£¢€¥®™+✓_|~!?@#%^&.©^]/gi.test(m.body) ? m.body.match(/^[°•π÷×¶∆£¢€¥®™+✓_|~!?@#%^&.©^]/gi)[0]: "");
 		const cmd = (m.cmd = m.body && m.body.slice(prefix.length).trim().split(/ +/).shift().toLowerCase());
 		const plugin = (m.command = plugins.get(cmd) || plugins.find((v) => v?.default.command && v.default.command.includes(cmd)));
 		const quoted = m.quoted ? m.quoted : m;
+		const today = moment.tz("Asia/Jakarta").format("dddd, DD MMMM YYYY");
 		
 		global.store = store 
 		
+		let user 
 		if (m) {
 			await (await import("../lib/database.js")).idb(m);
-			console.log("Command : " + m.body)
+			console.log(`<================>`);
+			console.log(chalk.black(chalk.bgWhite(!m.cmd ? "<> MESSAGE </>" : "<> COMMAND </>")), 
+			chalk.black(chalk.bgGreen(today)),
+			chalk.black(chalk.bgBlue(m.body || m.mtype)) +
+			"\n" +
+			chalk.magenta("=> From"),
+			chalk.green(m.pushName),
+			chalk.yellow(m.from) + "\n" + chalk.blueBright("=> In"),
+			chalk.green(m.isGroup ? m.pushName : "Private Chat", m.from),
+          );
+          if (m.sender && (user = db.users[m.sender])) {
+				user.exp += m.exp
+			}
 		}
 		
         if (m.isGroup) {

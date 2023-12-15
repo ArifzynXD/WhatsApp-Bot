@@ -1,5 +1,6 @@
 import FormData from 'form-data';
 import axios from 'axios';
+import util from "util"; 
 
 export default {
   name: "bard",
@@ -14,11 +15,13 @@ export default {
         formData.append("image", await quoted.download(), { filename: Date.now() + ".jpg" });
         formData.append("text", m.text);
         const { data } = await axios.post(API("arifzyn", "/ai/bard", {}, "apikey"), formData);
+        if (data.status !== 200) return m.reply(util.format(data))
         m.reply(data.result);
       } else {
         const { data } = await axios.post(API("arifzyn", "/ai/bard", {}, "apikey"), {
         	text: m.text
         })
+        if (data.status !== 200) return m.reply(util.format(data))
         m.reply(data.result);
       }
     } catch (e) {

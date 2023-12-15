@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.5.0",
+    "@whiskeysockets/baileys": "github:WhiskeySockets/Baileys#update-proto/stable",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "chokidar": "^3.5.3",
