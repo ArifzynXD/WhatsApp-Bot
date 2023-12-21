@@ -1,6 +1,6 @@
 export default {
-	name: ["ai", "you", "bard", "bing", "gemini"],
-	command: ["ai", "you", "bard", "bing", "gemini"],
+	name: ["ai", "you", "bing", "gemini"],
+	command: ["ai", "you", "bing", "gemini"],
 	tags: ["ai"],
 	use: "Yes can I help you?",
 	run: async (m, { conn, command }) => {
@@ -14,7 +14,7 @@ export default {
 				  response = await Func.axios.post(global.API("arifzyn", "/ai/bard", {}, "apikey"), {
 				  	text: m.text
 				  })
-				  break;
+				  break; 
 				case "bing": 
 				  response = await Func.axios.get(global.API("arifzyn", "/ai/bing", { text: m.text }, "apikey"))
 				  break

@@ -183,7 +183,7 @@ export default {
           showAdAttribution: true,
           title: `${moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')}`,
           body: "Copyright © 2023 Arifzyn.",
-          thumbnailUrl: "https://telegra.ph/file/f00da6771bcf46c905951.jpg",
+          thumbnailUrl: "https://telegra.ph/file/2ae1d634c9634f052eb16.jpg",
           sourceUrl: config.Exif.packId,
           mediaType: 1,
           renderLargerThumbnail: true,

@@ -15,14 +15,14 @@ export default {
       public: false,
       antiCall: true, // reject call
       database: "database.json", // End .json when using JSON database or use Mongo URI
-      owner: ["6288213503541", "6283850148706"], // set owner number on here
+      owner: ["6285691464024"], // set owner number on here
       pairing: "6288213503541",
       sessionName: "session", // for name session
       prefix: /^[°•π÷×¶∆£¢€¥®™+✓_|/~!?@#%^&.©^]/i,
       pairingNumber: "", // Example Input : 62xxx
       pathPlugins: "plugins",
       wm: "*Source:* https://api.arifzyn.biz.id"
-   },
+   }, 
    
    // Function Maybee
    reloadFile: (path) => reloadFile(path),
@@ -78,4 +78,4 @@ async function reloadFile(file) {
   });
 }
 
-reloadFile(import.meta.url);
+await reloadFile(import.meta.url);
