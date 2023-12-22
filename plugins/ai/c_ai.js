@@ -36,4 +36,5 @@ export default {
       m.reply(config.msg.error);
     }
   },
+  owner: true,
 };
