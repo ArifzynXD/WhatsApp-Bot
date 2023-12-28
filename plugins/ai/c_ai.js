@@ -8,15 +8,12 @@ export default {
       let response;
       switch (command) {
         case "mahiru":
-          response = await Func.fetchJson(
-            global.API("arifzyn", "/ai/cai/chat",
-              {
-                character_id: "OFj9jql7NKi0e57oJzzf1W18zth5d-pHxk1fjAjZnho",
+          response = await Func.axios.post(
+            global.API("arifzyn", "/ai/cai/chat", {}, "apikey"), {
+            	character_id: "OFj9jql7NKi0e57oJzzf1W18zth5d-pHxk1fjAjZnho",
+            	chatId: "er0p2AW98xAx3r98wsqa0jh90H5-FEvYBLQKbFvLXIE", 
                 message: m.text,
-              },
-              "apikey",
-            ),
-          );
+            });
           break;
         case "nino":
           response = await Func.axios.post(

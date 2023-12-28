@@ -15,7 +15,7 @@ export default {
       public: false,
       antiCall: true, // reject call
       database: "database.json", // End .json when using JSON database or use Mongo URI
-      owner: ["6285691464024"], // set owner number on here
+      owner: ["62895347198105"], // set owner number on here
       pairing: "6288213503541",
       sessionName: "session", // for name session
       prefix: /^[°•π÷×¶∆£¢€¥®™+✓_|/~!?@#%^&.©^]/i,
